@@ -1,9 +1,17 @@
 .DS_Store
 __pycache__/
 *.pyc
+images/
+zz.archive/
+zz.Archive/
 
 # local / generated
 .venv/
 __pycache__/
 *.pyc
 .DS_Store
+uploads/
+
+# Model checkpoints - keep only best.pt and last.pt
+data/models/*/bark_classifier/weights/epoch*.pt
+
