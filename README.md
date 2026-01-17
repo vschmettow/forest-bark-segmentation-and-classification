@@ -86,16 +86,19 @@ Bark/
 │   ├── SAM2_INSTALLATION.md             # SAM2 installation guide
 │   └── requirements.txt                  # Python dependencies
 │
-├── data/                          # All data files
-│   ├── models/                           # Trained models
-│   │   ├── yolov8_results/              # Non-augmented model
-│   │   └── yolov8_results_augmented/    # Augmented model
+├── data/                          # Model files only
+│   └── models/                           # Trained models
+│       ├── yolov8_results/              # Non-augmented model
+│       └── yolov8_results_augmented/    # Augmented model
+│
+├── images/                        # All image data
 │   ├── training_data/                    # Training datasets
 │   │   ├── training_data_augmented/      # Augmented dataset
 │   │   └── training_data_small_sample/   # Original dataset
 │   ├── test_images/                      # Test images
 │   ├── OriginalBark/                     # Original bark images
-│   └── [Modified image directories]      # Processed images
+│   ├── Picea-BarkNet-Part-1of4-modified/ # Modified Picea images
+│   └── Pinus-Bark-KR-modified/          # Modified Pinus images
 │
 ├── Archive/                       # Old/unused files
 │   └── Preprocessing scripts/            # Old scripts and SAM weights
@@ -188,9 +191,12 @@ python3 predict_yolov8_bark.py --image path/to/image.jpg
 
 ### Training New Models
 
+See the [Complete Training Guide](docs/TRAINING_GUIDE.md) for detailed instructions and model weight download links.
+
+**Quick start:**
 ```bash
 cd scripts
-python3 train_yolov8_classifier.py --data_dir ../data/training_data/training_data_small_sample
+python3 train_yolov8_classifier.py --data_dir ../images/training_data/training_data_small_sample
 ```
 
 ## 🔧 Technical Details
@@ -262,6 +268,7 @@ python3 train_yolov8_classifier.py --data_dir ../data/training_data/training_dat
 ## 📚 Additional Documentation
 
 - `PROJECT_STRUCTURE.md` - Detailed directory organization
+- `docs/TRAINING_GUIDE.md` - **Complete training guide with model weight download links**
 - `docs/FOREST_ANALYZER_README.md` - Full analyzer documentation
 - `docs/WEB_CLASSIFIER_README.md` - Simple classifier documentation
 - `docs/README_YOLOv8.md` - YOLOv8 training details
@@ -274,7 +281,7 @@ python3 train_yolov8_classifier.py --data_dir ../data/training_data/training_dat
 - Run apps from `apps/` directory
 - Run scripts from `scripts/` directory
 - Models stored in `data/models/`
-- Training data in `data/training_data/`
+- Training data in `images/training_data/`
 
 ## 📄 License
 
