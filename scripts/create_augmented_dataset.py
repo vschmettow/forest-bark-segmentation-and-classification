@@ -127,13 +127,13 @@ def main():
     parser.add_argument(
         '--source_dir',
         type=str,
-        default='../data/training_data/training_data_small_sample',
+        default='../images/training_data/training_data_small_sample',
         help='Source directory (default: ./training_data_small_sample)'
     )
     parser.add_argument(
         '--output_dir',
         type=str,
-        default='../data/training_data/training_data_augmented',
+        default='../images/training_data/training_data_augmented',
         help='Output directory (default: ./training_data_augmented)'
     )
     parser.add_argument(

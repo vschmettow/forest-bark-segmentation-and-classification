@@ -32,10 +32,12 @@ Bark/
 │   ├── IMAGE_QUALITY_REQUIREMENTS.md # Image quality guidelines
 │   └── requirements.txt          # Python dependencies
 │
-├── data/                          # All data files
-│   ├── models/                   # Trained models and results
-│   │   ├── yolov8_results/      # Non-augmented model results
-│   │   └── yolov8_results_augmented/  # Augmented model results
+├── data/                          # Model files only
+│   └── models/                   # Trained models and results
+│       ├── yolov8_results/      # Non-augmented model results
+│       └── yolov8_results_augmented/  # Augmented model results
+│
+├── images/                        # All image data
 │   ├── training_data/            # Training datasets
 │   │   ├── training_data_augmented/    # Augmented training data
 │   │   └── training_data_small_sample/ # Small sample training data
@@ -63,7 +65,7 @@ python3 forest_bark_analyzer.py
 # Access at http://localhost:5002
 ```
 
-**Augmented model:**
+**Augmented images model:**
 ```bash
 cd apps
 python3 forest_bark_analyzer_augmented.py
@@ -82,19 +84,19 @@ python3 bark_classifier_web.py
 
 ```bash
 cd scripts
-python3 train_yolov8_classifier.py --data_dir ../data/training_data/training_data_small_sample
+python3 train_yolov8_classifier.py --data_dir ../images/training_data/training_data_small_sample
 ```
 
 ### Creating Augmented Dataset
 
 ```bash
 cd scripts
-python3 create_augmented_dataset.py --source_dir ../data/training_data/training_data_small_sample
+python3 create_augmented_dataset.py --source_dir ../images/training_data/training_data_small_sample
 ```
 
 ## Notes
 
 - All paths in scripts/apps are relative to their parent directories
 - Models are stored in `data/models/`
-- Training data is stored in `data/training_data/`
+- Training data is stored in `images/training_data/`
 - Old/unused files are archived in `Archive/`

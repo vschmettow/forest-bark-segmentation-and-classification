@@ -240,7 +240,7 @@ def train_yolov8(
 def main():
     parser = argparse.ArgumentParser(description='Train YOLOv8 classification model for bark images')
     parser.add_argument('--data_dir', type=str, 
-                        default='../data/training_data/training_data_small_sample',
+                        default='../images/training_data/training_data_small_sample',
                         help='Directory containing Picea/ and Pinus/ folders with training/ and validation/ subfolders')
     parser.add_argument('--yolo_data_dir', type=str, default=None,
                         help='Pre-organized YOLOv8 format dataset (if None, will reorganize from data_dir)')
