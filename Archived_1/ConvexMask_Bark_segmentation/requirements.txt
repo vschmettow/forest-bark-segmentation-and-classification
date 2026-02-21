@@ -1,0 +1,8 @@
+# Web app and shared deps.
+# PercepTree backend: pip install 'git+https://github.com/facebookresearch/detectron2.git'
+# ConvexMask backend: clone convexmask_repo and install its deps + pycocotools
+flask>=2.0
+opencv-python-headless>=4.5
+numpy>=1.19
+torch
+torchvision
