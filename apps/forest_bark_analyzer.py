@@ -23,6 +23,8 @@ app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'JPEG', 'JPG', 'PNG'}
 
 Path(app.config['UPLOAD_FOLDER']).mkdir(exist_ok=True)
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 # Global models
 sam_predictor = None
 classifier_model = None
@@ -73,11 +75,13 @@ def setup_sam2_model():
                 
                 # SAM2 requires config file - check if SAM2 repo is available
                 # SAM2 checkpoints directory structure
-                sam2_checkpoint_dir = "../Archive/Preprocessing scripts/"
+                sam2_checkpoint_dir = str(PROJECT_ROOT / "Archived_2" / "zz.Archive" / "Preprocessing scripts")
                 sam2_repo_dir = None
                 
                 # Check if SAM2 repo exists nearby (common location)
                 possible_repos = [
+                    str(PROJECT_ROOT / "Archived_2" / "zz.Archive" / "segment-anything-2"),
+                    str(PROJECT_ROOT / "segment-anything-2"),
                     "../segment-anything-2",
                     "./segment-anything-2",
                     os.path.expanduser("~/segment-anything-2")
@@ -134,8 +138,8 @@ def setup_sam2_model():
                 from segment_anything import sam_model_registry, SamAutomaticMaskGenerator
                 
                 # Check for SAM v1 model weights
-                sam_checkpoint_base = "../Archive/Preprocessing scripts/sam_vit_b_01ec64.pth"
-                sam_checkpoint_huge = "../Archive/Preprocessing scripts/sam_vit_h_4b8939.pth"
+                sam_checkpoint_base = str(PROJECT_ROOT / "Archived_2" / "zz.Archive" / "Preprocessing scripts" / "sam_vit_b_01ec64.pth")
+                sam_checkpoint_huge = str(PROJECT_ROOT / "Archived_2" / "zz.Archive" / "Preprocessing scripts" / "sam_vit_h_4b8939.pth")
                 
                 if os.path.exists(sam_checkpoint_huge):
                     sam_checkpoint = sam_checkpoint_huge
@@ -172,7 +176,7 @@ def setup_classifier_model():
     global classifier_model
     
     if classifier_model is None:
-        model_path = '../data/models/yolov8_results/bark_classifier/weights/best.pt'
+        model_path = str(PROJECT_ROOT / "Archived_2" / "data" / "models" / "yolov8_results" / "bark_classifier" / "weights" / "best.pt")
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"Classifier model not found at {model_path}")
         

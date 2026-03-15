@@ -3,6 +3,9 @@
 
 import sys
 import os
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 print("=" * 70)
 print("SAM2 Installation and API Test")
@@ -48,7 +51,7 @@ except ImportError as e:
 
 # Test 3: Check for model weights
 print("\n3. Checking for SAM2 model weights...")
-sam2_checkpoints_dir = "Archive/Preprocessing scripts/"
+sam2_checkpoints_dir = str(PROJECT_ROOT / "Archived_2" / "zz.Archive" / "Preprocessing scripts")
 possible_checkpoints = [
     "sam2_hiera_large.pt",
     "sam2_hiera_l.pt", 
@@ -70,7 +73,7 @@ if not found_checkpoints:
     print(f"  Searched in: {sam2_checkpoints_dir}")
     print("\nTo download SAM2 checkpoints:")
     print("  Visit: https://github.com/facebookresearch/segment-anything-2")
-    print("  Download checkpoints and place in Archive/Preprocessing scripts/")
+    print(f"  Download checkpoints and place in {sam2_checkpoints_dir}")
 
 # Test 4: Try to inspect SAM2 module structure
 print("\n4. Inspecting SAM2 module structure...")

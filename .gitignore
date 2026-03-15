@@ -36,3 +36,14 @@ ConvexMask_Bark_segmentation/convexmask_repo/
 forest_instance_segmentation/models/
 forest_instance_segmentation/data/
 
+# Additional large files/folders (do not push)
+Archive.zip
+BarkNetCOCO/
+BarkNetYOLO/
+LabellingTool/
+rawBarkNet/
+Results/
+best_models/
+segmentation_results/
+yolov8s-seg.pt
+

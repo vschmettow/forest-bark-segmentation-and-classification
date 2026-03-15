@@ -19,8 +19,10 @@ app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'JPEG', 'JPG', 'PNG'}
 # Create uploads directory if it doesn't exist
 Path(app.config['UPLOAD_FOLDER']).mkdir(exist_ok=True)
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 # Load model (will be loaded on first request)
-MODEL_PATH = '../data/models/yolov8_results/bark_classifier/weights/best.pt'
+MODEL_PATH = str(PROJECT_ROOT / "Archived_2" / "data" / "models" / "yolov8_results" / "bark_classifier" / "weights" / "best.pt")
 model = None
 
 def load_model():

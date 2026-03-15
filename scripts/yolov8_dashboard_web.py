@@ -10,7 +10,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-RESULTS_DIR = Path('../data/models/yolov8_results/bark_classifier')
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+RESULTS_DIR = PROJECT_ROOT / "Archived_2" / "data" / "models" / "yolov8_results" / "bark_classifier"
 UPDATE_INTERVAL = 2
 
 def find_results_csv():
@@ -501,8 +502,8 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='YOLOv8 Training Dashboard')
-    parser.add_argument('--results_dir', type=str, default='../data/models/yolov8_results/bark_classifier',
-                        help='Directory containing YOLOv8 results (default: ./yolov8_results/bark_classifier)')
+    parser.add_argument('--results_dir', type=str, default=None,
+                        help='Directory containing YOLOv8 results (default: Archived_2/data/models/yolov8_results/bark_classifier)')
     parser.add_argument('--port', type=int, default=5000,
                         help='Port to run the web server on (default: 5000)')
     parser.add_argument('--host', type=str, default='127.0.0.1',
@@ -511,7 +512,7 @@ def main():
     args = parser.parse_args()
     
     global RESULTS_DIR
-    RESULTS_DIR = Path(args.results_dir)
+    RESULTS_DIR = Path(args.results_dir) if args.results_dir else (PROJECT_ROOT / "Archived_2" / "data" / "models" / "yolov8_results" / "bark_classifier")
     
     print(f"YOLOv8 Training Dashboard")
     print(f"Results directory: {RESULTS_DIR}")

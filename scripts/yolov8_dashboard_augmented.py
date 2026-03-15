@@ -11,7 +11,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-RESULTS_DIR = Path('../data/models/yolov8_results_augmented/bark_classifier')
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+RESULTS_DIR = PROJECT_ROOT / "Archived_2" / "data" / "models" / "yolov8_results_augmented" / "bark_classifier"
 UPDATE_INTERVAL = 2
 
 def find_results_csv():

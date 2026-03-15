@@ -4,6 +4,8 @@
 
 import os
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 from ultralytics import YOLO
 import shutil
 import argparse
@@ -160,7 +162,7 @@ def train_yolov8(
     batch_size=4,
     img_size=(600, 600),
     model_size='s',
-    output_dir='../data/models/yolov8_results'
+    output_dir=None
 ):
     """
     Train YOLOv8 classification model
@@ -171,8 +173,10 @@ def train_yolov8(
         batch_size: Batch size for training
         img_size: Image size (width, height)
         model_size: YOLOv8 model size ('n', 's', 'm', 'l', 'x')
-        output_dir: Directory to save results
+        output_dir: Directory to save results (default: Archived_2/data/models/yolov8_results)
     """
+    if output_dir is None:
+        output_dir = str(PROJECT_ROOT / "Archived_2" / "data" / "models" / "yolov8_results")
     print("=" * 70)
     print("YOLOV8 CLASSIFICATION TRAINING")
     print("=" * 70)
@@ -254,8 +258,8 @@ def main():
     parser.add_argument('--model_size', type=str, default='s',
                         choices=['n', 's', 'm', 'l', 'x'],
                         help='YOLOv8 model size: n=nano, s=small, m=medium, l=large, x=xlarge (default: s)')
-    parser.add_argument('--output_dir', type=str, default='../data/models/yolov8_results',
-                        help='Output directory for training results (default: ./yolov8_results)')
+    parser.add_argument('--output_dir', type=str, default=None,
+                        help='Output directory for training results (default: Archived_2/data/models/yolov8_results)')
     parser.add_argument('--keep_temp_data', action='store_true',
                         help='Keep temporary reorganized dataset (default: False)')
     
@@ -271,6 +275,7 @@ def main():
         data_dir_to_use = Path(args.yolo_data_dir)
         print(f"Using existing YOLOv8 dataset: {data_dir_to_use}")
     
+    output_dir = args.output_dir or str(PROJECT_ROOT / "Archived_2" / "data" / "models" / "yolov8_results")
     # Train model
     results = train_yolov8(
         data_dir=data_dir_to_use,
@@ -278,7 +283,7 @@ def main():
         batch_size=args.batch_size,
         img_size=tuple(args.img_size),
         model_size=args.model_size,
-        output_dir=args.output_dir
+        output_dir=output_dir
     )
     
     # Clean up temporary dataset if not keeping it
