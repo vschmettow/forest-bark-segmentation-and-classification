@@ -43,7 +43,6 @@ BarkNetYOLO/
 LabellingTool/
 rawBarkNet/
 Results/
-best_models/
 segmentation_results/
 yolov8s-seg.pt
 
