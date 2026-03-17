@@ -15,7 +15,7 @@ Central folder for the best checkpoints from YOLOv8s-seg and ConvexMask R50-FPN.
 **YOLOv8:**
 ```python
 from ultralytics import YOLO
-model = YOLO("best_models/yolov8s_seg_data0_best.pt")
+model = YOLO("models/yolov8s_seg_data0_best.pt")
 ```
 
 **ConvexMask:** Load via ConvexMask repo `eval.py` or `load_weights()` with the `.pth` file.
