@@ -42,7 +42,10 @@ BarkNetCOCO/
 BarkNetYOLO/
 LabellingTool/
 rawBarkNet/
-Results/
+# Results folder - ignore contents except evaluation_report
+results/*
+!results/evaluation_report/
+!results/evaluation_report/**
 segmentation_results/
 yolov8s-seg.pt
 
